@@ -12,7 +12,31 @@ const createProduct = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const getProducts = catchAsync(async (req, res) => {
+  let category: string = '';
+  if (req.query.category) {
+    category = req.query.category as string;
+  }
+  const result = await productsServices.getProductsFromDB(category);
+  sendResponse(res, {
+    status: httpStatus.OK,
+    success: true,
+    message: 'product fetched successfully.',
+    data: result,
+  });
+});
+const getSingleProduct = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await productsServices.getSingleProductFromDB(id);
+  sendResponse(res, {
+    status: httpStatus.OK,
+    success: true,
+    message: 'product fetched successfully.',
+    data: result,
+  });
+});
 
 export const productControllers = {
   createProduct,
+  getProducts,
 };
