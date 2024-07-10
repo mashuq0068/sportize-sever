@@ -15,11 +15,7 @@ const createProduct = catchAsync(async (req, res) => {
 });
 // get products
 const getProducts = catchAsync(async (req, res) => {
-  let category: string = '';
-  if (req.query.category) {
-    category = req.query.category as string;
-  }
-  const result = await productsServices.getProductsFromDB(category);
+  const result = await productsServices.getProductsFromDB(req.query);
   sendResponse(res, {
     status: httpStatus.OK,
     success: true,
