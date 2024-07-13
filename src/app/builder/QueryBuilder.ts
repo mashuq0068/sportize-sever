@@ -13,14 +13,16 @@ class QueryBuilder<T> {
   search(searchableFields: string[]) {
     const searchTerm = this?.query?.searchTerm;
     if (searchTerm) {
-      this.modelQuery = this.modelQuery.find({
-        $or: searchableFields.map(
-          (field) =>
-            ({
-              [field]: { $regex: searchTerm, $options: 'i' },
-            }) as FilterQuery<T>,
-        ),
-      });
+      this.modelQuery = this.modelQuery
+        .find({
+          $or: searchableFields.map(
+            (field) =>
+              ({
+                [field]: { $regex: searchTerm, $options: 'i' },
+              }) as FilterQuery<T>,
+          ),
+        })
+        .limit(10);
     }
 
     return this;
@@ -29,14 +31,23 @@ class QueryBuilder<T> {
   //   filtering
   filter() {
     const queryObj = { ...this.query };
-    if (Object.keys(queryObj).includes('price')) {
+    if (queryObj?.price) {
       this.modelQuery = this.modelQuery.find({
         price: { $lte: queryObj.price },
       });
     }
+    // if (queryObj?.rating) {
+    //   this.modelQuery = this.modelQuery.find({
+    //     price: { $eq: queryObj.rating },
+    //   });
+    // }
 
-    const excludeFields = ['searchTerm', 'sort', 'price'];
-
+    const excludeFields = ['searchTerm', 'sort', 'price', 'limit'];
+    for (const key in queryObj) {
+      if (!queryObj[key]) {
+        excludeFields.push(key);
+      }
+    }
     excludeFields.forEach((el) => delete queryObj[el]);
 
     this.modelQuery = this.modelQuery.find(queryObj as FilterQuery<T>);
@@ -44,12 +55,19 @@ class QueryBuilder<T> {
     return this;
   }
   //   sorting
-
   sort() {
     const sort =
-      (this?.query?.sort as string)?.split(',')?.join(' ') || '-createdAt';
+      this?.query?.sort || '-createdAt';
+      // console.log(this.query.sort);
     this.modelQuery = this.modelQuery.sort(sort as string);
 
+    return this;
+  }
+
+  // limit
+  limit() {
+    const limit = Number(this?.query?.limit);
+    this.modelQuery = this.modelQuery.limit(limit);
     return this;
   }
 }

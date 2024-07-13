@@ -4,6 +4,7 @@ import { productControllers } from './products.controller';
 import { productValidationSchemas } from './products.validation';
 const router = express.Router();
 router.get('/', productControllers.getProducts);
+router.post('/check-stock', productControllers.checkProductStock);
 router.post(
   '/',
   zodValidation(productValidationSchemas.createProductValidationSchema),
@@ -16,4 +17,5 @@ router.patch(
 );
 router.get('/:id', productControllers.getSingleProduct);
 router.delete('/:id', productControllers.deleteSingleProduct);
+router.post('/checkout', productControllers.checkout);
 export const productRoutes = router;

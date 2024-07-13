@@ -9,7 +9,7 @@ const sendResponse = <T>(res: Response, responseData: IResponseData<T>) => {
   res.status(responseData.status).json({
     success: responseData?.success,
     message: responseData?.message,
-    data: responseData?.message,
+    data: responseData?.data,
   });
 };
-export default sendResponse ;
+export default sendResponse;

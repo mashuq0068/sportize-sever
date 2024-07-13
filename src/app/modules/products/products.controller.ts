@@ -57,6 +57,26 @@ const deleteSingleProduct = catchAsync(async (req, res) => {
     data: result,
   });
 });
+// check product stock
+const checkProductStock = catchAsync(async (req, res) => {
+  const result = await productsServices.checkProductStockFromDB(req.body);
+  sendResponse(res, {
+    status: httpStatus.OK,
+    success: true,
+    message: 'product checked successfully.',
+    data: result,
+  });
+});
+// checkout
+const checkout = catchAsync(async (req, res) => {
+  const result = await productsServices.checkoutFromDB(req.body);
+  sendResponse(res, {
+    status: httpStatus.OK,
+    success: true,
+    message: 'Checkout process is success full',
+    data: result,
+  });
+});
 
 export const productControllers = {
   createProduct,
@@ -64,4 +84,6 @@ export const productControllers = {
   getSingleProduct,
   updateSingleProduct,
   deleteSingleProduct,
+  checkProductStock,
+  checkout,
 };
