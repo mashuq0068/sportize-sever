@@ -163,4 +163,4 @@ The project also includes the following development dependencies:
 
 ## Deployment
 
-- Live Link: [Sportize-backend project live link](https://bike-rental-backend-six.vercel.app/)
+- Live Link: [Sportize-backend project live link](https://sportize-server.vercel.app/)
