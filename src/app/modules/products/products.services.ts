@@ -99,5 +99,4 @@ export const productsServices = {
   deleteSingleProductFromDB,
   checkProductStockFromDB,
   checkoutFromDB,
-
 };
