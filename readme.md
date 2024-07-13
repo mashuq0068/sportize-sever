@@ -1,13 +1,19 @@
-# Bike Rental Backend
+# Sportize Backend
 
 ## Overview
 
-**Bike Rental Backend** is a backend service for a bike rental system. It provides APIs to manage bike rentals, user authentication, and data management. The backend is built using Node.js, Express, and MongoDB, and is written in TypeScript.
+
+**Sportize** Welcome to Sportize, your ultimate destination for a wide range of premium sporting goods designed to enhance your athletic
+performance and passion for sports. Whether you're a seasoned
+competitor, a weekend warrior, or someone just starting out,
+Sportize is here to equip you with everything you need to excel in
+your favorite sports and activities.
 
 ## Table of Contents
 
 - [Features](#features)
 - [Installation](#installation)
+- [Technologies](#technologies)
 - [Scripts](#scripts)
 - [Dependencies](#dependencies)
 - [Dev Dependencies](#dev-dependencies)
@@ -15,20 +21,29 @@
 
 ## Features
 
-- User can login and signup here.
-- They can see all bikes for rental and can book the bikes
-- But an admin can create bike, update bike details, delete bike, return the bike and other important things
-- As an user you can just book a bike or update your profile
-- And user has to pay money according to his rental hours
+- User can see sporting goods.
+- Can see details of all the sporting goods
+- Can filter, search and sort in products
+- user can manage his product by delete , update and add new product
+- It allows user to add products to cart and checkout products.
+
+## Technologies
+- Express
+- Typescript
+- Mongoose
+- Zod
+- Node-mailer
+- Dotenv
+- Cors
 
 ## Installation
 
-To get started with the Bike Rental Backend, you need to have Node.js and npm installed on your machine. Follow the steps below to set up the project:
+To get started with the Sportize Backend, you need to have Node.js and npm installed on your machine. Follow the steps below to set up the project:
 
 1. Clone the repository:
 
 ```bash
-  git clone https://github.com/yourusername/bike-rental-backend.git
+  git clone https://github.com/mashuq0068/sportize-sever.git
 ```
 
 2. Navigate to the project directory:
@@ -121,9 +136,6 @@ npm run test
 
 The project relies on the following dependencies:
 
-- **@types/bcrypt**: ^5.0.2
-- **@types/jsonwebtoken**: ^9.0.6
-- **bcrypt**: ^5.1.1
 - **cors**: ^2.8.5
 - **dotenv**: ^16.4.5
 - **express**: ^4.19.2
@@ -151,4 +163,4 @@ The project also includes the following development dependencies:
 
 ## Deployment
 
-- Live Link: [Bike-rental project live link](https://bike-rental-backend-six.vercel.app/)
+- Live Link: [Sportize-backend project live link](https://bike-rental-backend-six.vercel.app/)
